@@ -73,7 +73,6 @@
             repeating-linear-gradient(90deg, transparent 0 60px, rgba(0,0,0,0.15) 60px 62px);
         transform:translateZ(-300px) scale(1.4); transition:background 0.4s, filter 0.4s;
     }
-    /* Освещение по времени суток */
     #lighting { position:fixed; inset:0; pointer-events:none; z-index:9990; transition:background 2s; }
 
     .table {
@@ -85,87 +84,72 @@
     }
     .table::before { content:''; position:absolute; top:0; left:0; right:0; height:30%; background:linear-gradient(180deg, rgba(255,220,150,0.25), transparent); border-radius:40% 40% 0 0 / 100% 100% 0 0; }
 
+    /* Бутылки — 2 ряда, подняты выше, за стаканом */
     .bottle {
-        position:absolute; bottom:18%; width:60px; height:115px; border-radius:12px 12px 8px 8px;
+        position:absolute; width:50px; height:95px; border-radius:10px 10px 6px 6px;
         cursor:pointer; transition:transform 0.15s, box-shadow 0.15s, opacity 0.3s, filter 0.3s;
-        transform-origin:bottom center;
-        box-shadow:0 15px 25px rgba(0,0,0,0.6), inset -6px 0 12px rgba(0,0,0,0.4), inset 6px 0 12px rgba(255,255,255,0.1);
-        z-index:10;
+        transform-origin:bottom center; z-index:8;
+        box-shadow:0 10px 20px rgba(0,0,0,0.6), inset -4px 0 8px rgba(0,0,0,0.4), inset 4px 0 8px rgba(255,255,255,0.1);
     }
-    .bottle::before { content:''; position:absolute; top:-26px; left:50%; transform:translateX(-50%); width:22px; height:32px; border-radius:6px 6px 2px 2px; background:inherit; box-shadow:inset -3px 0 6px rgba(0,0,0,0.4), inset 3px 0 6px rgba(255,255,255,0.15); }
-    .bottle::after { content:''; position:absolute; top:-37px; left:50%; transform:translateX(-50%); width:26px; height:12px; border-radius:4px; background:#c9a86a; box-shadow:inset 0 -3px 5px rgba(0,0,0,0.4); }
-    .bottle:hover { transform:translateY(-12px) scale(1.05); box-shadow:0 25px 35px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,200,0.3); }
+    .bottle::before { content:''; position:absolute; top:-20px; left:50%; transform:translateX(-50%); width:18px; height:26px; border-radius:5px 5px 2px 2px; background:inherit; box-shadow:inset -2px 0 4px rgba(0,0,0,0.4), inset 2px 0 4px rgba(255,255,255,0.15); }
+    .bottle::after { content:''; position:absolute; top:-30px; left:50%; transform:translateX(-50%); width:22px; height:10px; border-radius:3px; background:#c9a86a; box-shadow:inset 0 -2px 4px rgba(0,0,0,0.4); }
+    .bottle:hover { transform:translateY(-12px) scale(1.08); box-shadow:0 15px 25px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,200,0.4); z-index:20; }
     .bottle:active { transform:translateY(-4px) scale(0.98); }
-    .bottle .label { position:absolute; top:40px; left:6px; right:6px; height:40px; background:rgba(255,248,230,0.92); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:bold; color:#333; box-shadow:inset 0 0 8px rgba(0,0,0,0.2); overflow:hidden; }
-    .bottle .hint { position:absolute; top:-68px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:#fff; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.2s; pointer-events:none; border:1px solid rgba(255,255,255,0.2); }
+    .bottle .label { position:absolute; top:32px; left:5px; right:5px; height:32px; background:rgba(255,248,230,0.92); border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:bold; color:#333; box-shadow:inset 0 0 6px rgba(0,0,0,0.2); overflow:hidden; }
+    .bottle .hint { position:absolute; top:-65px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.9); color:#fff; padding:4px 10px; border-radius:14px; font-size:11px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.2s; pointer-events:none; border:1px solid rgba(255,255,255,0.2); z-index:30; }
     .bottle:hover .hint { opacity:1; }
 
     /* Закуска */
     #snack {
-        position:fixed; bottom:16%; left:50%; transform:translateX(50%);
-        width:90px; height:70px; z-index:12; cursor:pointer;
-        display:flex; align-items:center; justify-content:center; font-size:50px;
+        position:fixed; bottom:22%; left:50%; transform:translateX(30%);
+        width:70px; height:60px; z-index:12; cursor:pointer;
+        display:flex; align-items:center; justify-content:center; font-size:40px;
         transition:transform 0.15s; filter:drop-shadow(0 10px 15px rgba(0,0,0,0.6));
     }
-    #snack:hover { transform:translateX(50%) translateY(-6px) scale(1.05); }
-    #snack:active { transform:translateX(50%) scale(0.95); }
-    #snack .snack-hint { position:absolute; top:-30px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:#fff; padding:4px 10px; border-radius:16px; font-size:11px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.2s; pointer-events:none; border:1px solid rgba(255,255,255,0.2); }
+    #snack:hover { transform:translateX(30%) translateY(-6px) scale(1.1); }
+    #snack .snack-hint { position:absolute; top:-26px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:#fff; padding:4px 10px; border-radius:14px; font-size:10px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.2s; pointer-events:none; }
     #snack:hover .snack-hint { opacity:1; }
 
     /* Собутыльник */
     #buddy {
-        position:fixed; bottom:14%; left:6%; width:100px; height:130px; z-index:14;
+        position:fixed; bottom:20%; left:3%; width:80px; height:110px; z-index:14;
         display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
         cursor:pointer; transition:transform 0.2s; filter:drop-shadow(0 10px 20px rgba(0,0,0,0.6));
     }
-    #buddy:hover { transform:translateY(-5px) scale(1.03); }
-    #buddy .buddy-body { font-size:70px; line-height:1; transition:transform 0.3s; }
+    #buddy:hover { transform:translateY(-5px) scale(1.05); }
+    #buddy .buddy-body { font-size:60px; line-height:1; transition:transform 0.3s; }
     #buddy.drinking .buddy-body { transform:rotate(-10deg) translateY(-5px); }
-    #buddy .buddy-bubble {
-        position:absolute; top:-10px; left:50%; transform:translateX(-50%);
-        background:#fff; color:#000; padding:6px 12px; border-radius:16px;
-        font-size:12px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.3s;
-        pointer-events:none; box-shadow:0 4px 10px rgba(0,0,0,0.3); max-width:160px; text-align:center;
-    }
+    #buddy .buddy-bubble { position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:#fff; color:#000; padding:5px 10px; border-radius:14px; font-size:11px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.3s; pointer-events:none; box-shadow:0 4px 10px rgba(0,0,0,0.3); max-width:150px; text-align:center; z-index:20; }
     #buddy .buddy-bubble.show { opacity:1; }
-    #buddy .buddy-bubble::after { content:''; position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); border-left:6px solid transparent; border-right:6px solid transparent; border-top:6px solid #fff; }
-    #buddy .buddy-name { font-size:10px; color:rgba(255,255,255,0.7); margin-top:4px; text-shadow:0 1px 4px #000; font-weight:bold; }
+    #buddy .buddy-bubble::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); border-left:5px solid transparent; border-right:5px solid transparent; border-top:5px solid #fff; }
+    #buddy .buddy-name { font-size:9px; color:rgba(255,255,255,0.7); margin-top:2px; text-shadow:0 1px 4px #000; font-weight:bold; }
 
     /* Кот */
-    #cat {
-        position:fixed; bottom:22%; right:8%; width:80px; height:80px; z-index:14;
-        display:flex; align-items:center; justify-content:center; font-size:55px;
-        cursor:pointer; transition:transform 0.2s; filter:drop-shadow(0 8px 15px rgba(0,0,0,0.6));
-    }
+    #cat { position:fixed; bottom:26%; right:4%; width:60px; height:60px; z-index:14; display:flex; align-items:center; justify-content:center; font-size:40px; cursor:pointer; transition:transform 0.2s; filter:drop-shadow(0 8px 15px rgba(0,0,0,0.6)); }
     #cat:hover { transform:scale(1.1); }
-    #cat .cat-bubble {
-        position:absolute; top:-16px; left:50%; transform:translateX(-50%);
-        background:#fff; color:#000; padding:5px 10px; border-radius:14px;
-        font-size:11px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.3s;
-        pointer-events:none; box-shadow:0 4px 10px rgba(0,0,0,0.3);
-    }
+    #cat .cat-bubble { position:absolute; top:-16px; left:50%; transform:translateX(-50%); background:#fff; color:#000; padding:4px 10px; border-radius:12px; font-size:10px; font-weight:bold; white-space:nowrap; opacity:0; transition:opacity 0.3s; pointer-events:none; box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:20; }
     #cat .cat-bubble.show { opacity:1; }
     #cat .cat-bubble::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); border-left:5px solid transparent; border-right:5px solid transparent; border-top:5px solid #fff; }
 
     /* ================= СТАКАН ================= */
-    #glass { position:fixed; bottom:8%; left:50%; transform:translateX(-50%); width:120px; height:165px; z-index:50; cursor:pointer; transition:transform 0.2s; filter:drop-shadow(0 20px 25px rgba(0,0,0,0.7)); }
+    #glass { position:fixed; bottom:8%; left:50%; transform:translateX(-50%); width:100px; height:140px; z-index:40; cursor:pointer; transition:transform 0.2s; filter:drop-shadow(0 20px 25px rgba(0,0,0,0.7)); }
     #glass:hover { transform:translateX(-50%) translateY(-8px); }
     #glass:active { transform:translateX(-50%) translateY(2px) scale(0.97); }
-    .glass-body { position:absolute; bottom:0; left:0; width:100%; height:100%; background:linear-gradient(90deg, rgba(200,220,255,0.25) 0%, rgba(255,255,255,0.1) 20%, rgba(200,220,255,0.15) 50%, rgba(255,255,255,0.1) 80%, rgba(200,220,255,0.25) 100%); border:3px solid rgba(255,255,255,0.35); border-radius:8px 8px 18px 18px; backdrop-filter:blur(1px); overflow:hidden; box-shadow:inset 0 0 25px rgba(255,255,255,0.15); }
-    #liquid { position:absolute; bottom:0; left:0; width:100%; height:0%; background:transparent; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.6s; border-radius:0 0 15px 15px; box-shadow:inset 0 0 20px rgba(0,0,0,0.3); }
-    .bubble-particle { position:absolute; bottom:0; width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.5); animation:bubbleUp 2s linear infinite; pointer-events:none; }
-    @keyframes bubbleUp { 0% { transform:translateY(0); opacity:0; } 10% { opacity:1; } 90% { opacity:1; } 100% { transform:translateY(-130px); opacity:0; } }
+    .glass-body { position:absolute; bottom:0; left:0; width:100%; height:100%; background:linear-gradient(90deg, rgba(200,220,255,0.25) 0%, rgba(255,255,255,0.1) 20%, rgba(200,220,255,0.15) 50%, rgba(255,255,255,0.1) 80%, rgba(200,220,255,0.25) 100%); border:3px solid rgba(255,255,255,0.35); border-radius:6px 6px 14px 14px; backdrop-filter:blur(1px); overflow:hidden; box-shadow:inset 0 0 25px rgba(255,255,255,0.15); }
+    #liquid { position:absolute; bottom:0; left:0; width:100%; height:0%; background:transparent; transition:height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.6s; border-radius:0 0 12px 12px; box-shadow:inset 0 0 20px rgba(0,0,0,0.3); }
+    .bubble-particle { position:absolute; bottom:0; width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.5); animation:bubbleUp 2s linear infinite; pointer-events:none; }
+    @keyframes bubbleUp { 0% { transform:translateY(0); opacity:0; } 10% { opacity:1; } 90% { opacity:1; } 100% { transform:translateY(-110px); opacity:0; } }
 
-    #drinkHint { position:fixed; bottom:2%; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.7); font-size:14px; font-weight:bold; z-index:60; text-shadow:0 2px 8px #000; letter-spacing:1px; transition:opacity 0.3s; text-align:center; }
+    #drinkHint { position:fixed; bottom:2%; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.7); font-size:13px; font-weight:bold; z-index:60; text-shadow:0 2px 8px #000; letter-spacing:1px; transition:opacity 0.3s; text-align:center; }
 
     /* ================= ИНФО ================= */
-    #recipe { position:fixed; top:12px; left:12px; background:rgba(0,0,0,0.55); backdrop-filter:blur(8px); color:#fff; padding:10px 14px; border-radius:14px; font-size:13px; z-index:100; border:1px solid rgba(255,255,255,0.15); max-width:260px; line-height:1.4; box-shadow:0 8px 25px rgba(0,0,0,0.5); transition:border-color 0.3s; }
+    #recipe { position:fixed; top:12px; left:12px; background:rgba(0,0,0,0.55); backdrop-filter:blur(8px); color:#fff; padding:10px 14px; border-radius:14px; font-size:13px; z-index:100; border:1px solid rgba(255,255,255,0.15); max-width:260px; line-height:1.4; box-shadow:0 8px 25px rgba(0,0,0,0.5); }
     #recipe h3 { font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#ffd78a; margin-bottom:6px; }
     #recipe .ingredient-list { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
     #recipe .ingredient-tag { background:rgba(255,255,255,0.15); padding:2px 8px; border-radius:16px; font-size:11px; }
     #recipe .empty { opacity:0.5; font-style:italic; }
 
-    #status { position:fixed; top:12px; right:12px; background:rgba(0,0,0,0.55); backdrop-filter:blur(8px); color:#fff; padding:8px 14px; border-radius:14px; font-size:12px; z-index:100; border:1px solid rgba(255,255,255,0.15); text-align:right; line-height:1.5; box-shadow:0 8px 25px rgba(0,0,0,0.5); transition:border-color 0.3s; }
+    #status { position:fixed; top:12px; right:12px; background:rgba(0,0,0,0.55); backdrop-filter:blur(8px); color:#fff; padding:8px 14px; border-radius:14px; font-size:12px; z-index:100; border:1px solid rgba(255,255,255,0.15); text-align:right; line-height:1.5; box-shadow:0 8px 25px rgba(0,0,0,0.5); }
     #status .value { color:#ffd78a; font-weight:bold; }
     #status .gender-tag { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; margin-top:2px; background:rgba(255,255,255,0.15); }
     #status .stats { font-size:10px; color:rgba(255,255,255,0.6); margin-top:4px; }
@@ -173,18 +157,18 @@
     /* ================= КНОПКИ ================= */
     .ui-btn { position:fixed; border:1px solid rgba(255,255,255,0.3); color:#fff; border-radius:24px; font-weight:bold; cursor:pointer; z-index:100; backdrop-filter:blur(5px); transition:background 0.2s, transform 0.1s; }
     .ui-btn:active { transform:scale(0.95); }
-    #resetBtn { bottom:16px; right:16px; background:rgba(180,40,40,0.8); padding:10px 18px; font-size:13px; }
+    #resetBtn { bottom:16px; right:16px; background:rgba(180,40,40,0.8); padding:10px 16px; font-size:13px; }
     #resetBtn:hover { background:rgba(220,50,50,0.9); }
-    #resetBtn.knocked-out { z-index:99999 !important; background:#ff2222 !important; border:3px solid #fff !important; box-shadow:0 0 40px rgba(255,50,50,0.9), 0 0 80px rgba(255,100,100,0.5) !important; font-size:16px !important; padding:14px 26px !important; animation:pulseKnockout 1s infinite !important; pointer-events:auto !important; }
+    #resetBtn.knocked-out { z-index:99999 !important; background:#ff2222 !important; border:3px solid #fff !important; box-shadow:0 0 40px rgba(255,50,50,0.9), 0 0 80px rgba(255,100,100,0.5) !important; font-size:15px !important; padding:12px 22px !important; animation:pulseKnockout 1s infinite !important; pointer-events:auto !important; }
     @keyframes pulseKnockout { 0%,100% { transform:scale(1); box-shadow:0 0 40px rgba(255,50,50,0.9); } 50% { transform:scale(1.08); box-shadow:0 0 60px rgba(255,80,80,1), 0 0 100px rgba(255,120,120,0.7); } }
-    #changeGenderBtn { bottom:16px; right:150px; background:rgba(60,60,120,0.8); padding:10px 18px; font-size:13px; }
+    #changeGenderBtn { bottom:16px; right:140px; background:rgba(60,60,120,0.8); padding:10px 16px; font-size:13px; }
     #changeGenderBtn:hover { background:rgba(80,80,160,0.9); }
     #changeGenderBtn.knocked-out { z-index:99999 !important; pointer-events:auto !important; opacity:0.4; }
-    #settingsBtn { bottom:16px; right:290px; background:rgba(60,60,60,0.8); padding:10px 14px; font-size:14px; }
+    #settingsBtn { bottom:16px; right:280px; background:rgba(60,60,60,0.8); padding:10px 14px; font-size:14px; }
     #settingsBtn:hover { background:rgba(90,90,90,0.9); }
-    #recipeBookBtn { bottom:16px; right:350px; background:rgba(80,60,140,0.8); padding:10px 14px; font-size:14px; }
+    #recipeBookBtn { bottom:16px; right:330px; background:rgba(80,60,140,0.8); padding:10px 14px; font-size:14px; }
     #recipeBookBtn:hover { background:rgba(110,80,180,0.9); }
-    #randomBtn { bottom:16px; right:410px; background:rgba(60,120,60,0.8); padding:10px 14px; font-size:14px; }
+    #randomBtn { bottom:16px; right:390px; background:rgba(60,120,60,0.8); padding:10px 14px; font-size:14px; }
     #randomBtn:hover { background:rgba(80,160,80,0.9); }
 
     /* ================= ПАНЕЛИ ================= */
@@ -194,7 +178,6 @@
     .panel .close-btn { position:absolute; top:12px; right:16px; background:none; border:none; color:#fff; font-size:24px; cursor:pointer; opacity:0.7; }
     .panel .close-btn:hover { opacity:1; }
 
-    /* Книга рецептов */
     #recipeBook .combo-list { display:flex; flex-direction:column; gap:6px; }
     #recipeBook .combo-item { background:rgba(255,255,255,0.06); padding:8px 12px; border-radius:10px; font-size:13px; display:flex; justify-content:space-between; align-items:center; }
     #recipeBook .combo-item.locked { opacity:0.4; font-style:italic; }
@@ -202,7 +185,6 @@
     #recipeBook .combo-item .combo-recipe { font-size:11px; color:rgba(255,255,255,0.6); }
     #recipeBook .progress { text-align:center; margin-bottom:14px; color:#ffd78a; font-size:14px; }
 
-    /* Достижения */
     #achievements .ach-list { display:flex; flex-direction:column; gap:8px; }
     #achievements .ach-item { background:rgba(255,255,255,0.06); padding:10px 14px; border-radius:10px; display:flex; align-items:center; gap:12px; font-size:13px; }
     #achievements .ach-item.locked { opacity:0.35; }
@@ -210,7 +192,6 @@
     #achievements .ach-item .ach-name { font-weight:bold; }
     #achievements .ach-item .ach-desc { font-size:11px; color:rgba(255,255,255,0.6); }
 
-    /* Настройки */
     #settings .setting-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
     #settings .setting-row:last-child { border-bottom:none; }
     #settings label { font-size:14px; }
@@ -225,9 +206,7 @@
     #flash { position:fixed; inset:0; background:white; opacity:0; pointer-events:none; z-index:10002; transition:opacity 0.12s; }
     #ghostLayer { position:fixed; inset:0; pointer-events:none; z-index:9998; opacity:0; mix-blend-mode:screen; transition:opacity 0.4s; overflow:hidden; }
     #ghostLayer > * { position:absolute; inset:0; width:100%; height:100%; }
-    .flies { position:fixed; inset:0; pointer-events:none; z-index:9995; opacity:0; transition:opacity 0.5s;
-        background-image: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 70% 60%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 40% 80%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 85% 20%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 55% 45%, rgba(0,0,0,0.4) 1px, transparent 2px);
-        background-size:200px 200px; animation:fliesMove 8s linear infinite; }
+    .flies { position:fixed; inset:0; pointer-events:none; z-index:9995; opacity:0; transition:opacity 0.5s; background-image: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 70% 60%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 40% 80%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 85% 20%, rgba(0,0,0,0.4) 1px, transparent 2px), radial-gradient(circle at 55% 45%, rgba(0,0,0,0.4) 1px, transparent 2px); background-size:200px 200px; animation:fliesMove 8s linear infinite; }
     @keyframes fliesMove { 0% { background-position:0 0,0 0,0 0,0 0,0 0; } 100% { background-position:100px 100px,-80px 120px,60px -90px,-120px 40px,90px -60px; } }
 
     .hallucination { position:fixed; pointer-events:none; z-index:9997; animation:hallucinationFloat 4s linear forwards; opacity:0; filter:blur(1px) drop-shadow(0 0 20px currentColor); will-change:transform, opacity; }
@@ -244,7 +223,6 @@
     #knockoutMessage .k-title { font-size:30px; color:#ff5555; margin-bottom:12px; text-shadow:0 0 20px rgba(255,50,50,0.8); }
     #knockoutMessage .k-hint { font-size:15px; color:#ffd78a; margin-top:16px; font-weight:normal; }
 
-    /* Похмелье */
     #hangoverOverlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:10010; display:none; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; padding:20px; }
     #hangoverOverlay.show { display:flex; }
     #hangoverOverlay .hangover-title { font-size:32px; color:#ff8888; margin-bottom:20px; text-shadow:0 0 30px rgba(255,100,100,0.6); }
@@ -254,19 +232,16 @@
     #hangoverOverlay .hangover-fx { position:fixed; inset:0; pointer-events:none; z-index:-1; background:repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,0,0,0.03) 3px 4px); animation:hangoverScroll 3s linear infinite; }
     @keyframes hangoverScroll { 0% { transform:translateY(0); } 100% { transform:translateY(40px); } }
 
-    /* Мини-игра */
     #minigame { position:fixed; inset:0; z-index:12000; display:none; align-items:center; justify-content:center; pointer-events:none; }
     #minigame.show { display:flex; pointer-events:auto; }
     #minigame .mg-circle { width:120px; height:120px; border:4px solid #ffd78a; border-radius:50%; position:relative; box-shadow:0 0 40px rgba(255,215,120,0.6); background:rgba(255,215,120,0.1); }
     #minigame .mg-target { width:30px; height:30px; background:#6fcf97; border-radius:50%; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:all 0.5s ease; box-shadow:0 0 20px #6fcf97; }
     #minigame .mg-info { position:absolute; top:20%; left:50%; transform:translateX(-50%); color:#fff; font-size:18px; font-weight:bold; text-align:center; text-shadow:0 2px 8px #000; white-space:nowrap; }
 
-    /* Уведомление о достижении */
     #achToast { position:fixed; top:80px; left:50%; transform:translateX(-50%) translateY(-20px); background:linear-gradient(135deg,#ffd78a,#ffa500); color:#000; padding:12px 24px; border-radius:16px; font-weight:bold; font-size:14px; z-index:10007; opacity:0; transition:opacity 0.4s, transform 0.4s; pointer-events:none; box-shadow:0 8px 30px rgba(255,180,50,0.6); display:flex; align-items:center; gap:10px; }
     #achToast.show { opacity:1; transform:translateX(-50%) translateY(0); }
     #achToast .ach-emoji { font-size:24px; }
 
-    /* ===== КЛЮЧЕВЫЕ КАДРЫ ЭФФЕКТОВ ===== */
     @keyframes screenShake { 0% { transform:translate(0,0) rotate(0deg); } 20% { transform:translate(-6px,4px) rotate(0.5deg); } 40% { transform:translate(6px,-4px) rotate(-0.5deg); } 60% { transform:translate(-4px,-6px) rotate(0.3deg); } 80% { transform:translate(4px,6px) rotate(-0.3deg); } 100% { transform:translate(0,0) rotate(0deg); } }
     .fx-shake { animation:screenShake 0.35s infinite; }
     @keyframes blurPulse { 0%,100% { filter:blur(0px); } 50% { filter:blur(6px); } }
@@ -302,34 +277,38 @@
         .gender-card .icon { font-size:60px; }
         .gender-card .title { font-size:18px; }
         .gender-card .subtitle { font-size:11px; }
-        #recipe { max-width:180px; font-size:11px; padding:8px 10px; }
+        #recipe { max-width:160px; font-size:11px; padding:8px 10px; }
         #status { font-size:10px; padding:6px 10px; }
-        #glass { width:90px; height:125px; bottom:10%; }
-        .bottle { width:48px; height:92px; }
-        .bottle .label { font-size:16px; height:32px; top:32px; }
-        #snack { width:60px; height:50px; font-size:36px; bottom:18%; }
-        #buddy { width:70px; height:100px; bottom:16%; left:2%; }
-        #buddy .buddy-body { font-size:50px; }
-        #cat { width:55px; height:55px; font-size:38px; bottom:24%; }
+        #glass { width:80px; height:110px; bottom:10%; }
+        .bottle { width:38px; height:72px; }
+        .bottle::before { top:-16px; width:14px; height:20px; }
+        .bottle::after { top:-24px; width:18px; height:8px; }
+        .bottle .label { font-size:14px; height:24px; top:24px; }
+        #snack { width:50px; height:40px; font-size:30px; bottom:24%; }
+        #buddy { width:60px; height:80px; bottom:22%; left:1%; }
+        #buddy .buddy-body { font-size:44px; }
+        #cat { width:44px; height:44px; font-size:30px; bottom:28%; right:1%; }
         .hand-inner { font-size:90px; }
         .ui-btn { font-size:11px; padding:8px 12px; }
-        #resetBtn { bottom:12px; right:12px; }
-        #changeGenderBtn { bottom:12px; right:120px; }
-        #settingsBtn { bottom:12px; right:220px; }
-        #recipeBookBtn { bottom:12px; right:270px; }
-        #randomBtn { bottom:12px; right:320px; }
+        #resetBtn { bottom:10px; right:10px; }
+        #changeGenderBtn { bottom:10px; right:110px; }
+        #settingsBtn { bottom:10px; right:210px; }
+        #recipeBookBtn { bottom:10px; right:255px; }
+        #randomBtn { bottom:10px; right:300px; }
         .panel { padding:16px; }
+        #drinkHint { font-size:10px; }
     }
     @media (max-width: 500px) {
         #recipe { display:none; }
-        .bottle { width:40px; height:80px; }
-        .bottle .label { font-size:13px; height:28px; top:26px; }
+        .bottle { width:32px; height:60px; }
+        .bottle .label { font-size:12px; height:20px; top:20px; }
+        #buddy { display:none; }
+        #snack { bottom:26%; }
     }
 </style>
 </head>
 <body>
 
-<!-- ЭКРАН ВЫБОРА ПЕРСОНАЖА -->
 <div id="characterSelect">
     <h1>🍹 Пьяный Кулинар</h1>
     <div class="sub">Выбери, от чьего лица ты будешь пить</div>
@@ -359,41 +338,34 @@
     </div>
 </div>
 
-<!-- Руки -->
 <div id="hands">
     <div class="hand" id="handLeft"><span class="hand-inner" id="handLeftIcon">✋</span></div>
     <div class="hand" id="handRight"><span class="hand-inner" id="handRightIcon">🤚</span></div>
 </div>
 
-<!-- Сцена -->
 <div id="viewport">
     <div class="room" id="room"></div>
     <div class="table" id="table"></div>
 </div>
 
-<!-- Освещение по времени суток -->
 <div id="lighting"></div>
 
-<!-- Собутыльник -->
 <div id="buddy">
     <div class="buddy-bubble" id="buddyBubble"></div>
     <div class="buddy-body" id="buddyBody">🧔</div>
     <div class="buddy-name" id="buddyName">Собутыльник</div>
 </div>
 
-<!-- Кот -->
 <div id="cat">
     <div class="cat-bubble" id="catBubble"></div>
     <div id="catBody">🐱</div>
 </div>
 
-<!-- Закуска -->
 <div id="snack">
     <div class="snack-hint">Закусить (снижает опьянение)</div>
     🍟
 </div>
 
-<!-- Стакан -->
 <div id="glass">
     <div class="glass-body">
         <div id="liquid"></div>
@@ -402,7 +374,6 @@
 
 <div id="drinkHint">Кликни по стакану, чтобы выпить 🍻</div>
 
-<!-- Инфо -->
 <div id="recipe">
     <h3>🍸 В стакане</h3>
     <div id="ingredientList" class="ingredient-list"><span class="empty">пусто</span></div>
@@ -415,20 +386,17 @@
     <div class="stats" id="statsText"></div>
 </div>
 
-<!-- Индикатор опьянения -->
 <div id="drunkLabel" style="position:fixed;bottom:46px;left:16px;color:rgba(255,255,255,0.7);font-size:11px;font-weight:bold;letter-spacing:1px;z-index:100;text-shadow:0 1px 4px #000;">УРОВЕНЬ ОПЬЯНЕНИЯ</div>
 <div id="drunkMeter" style="position:fixed;bottom:20px;left:16px;width:180px;height:20px;background:rgba(0,0,0,0.6);border-radius:20px;overflow:hidden;z-index:100;border:1px solid rgba(255,255,255,0.2);box-shadow:0 4px 15px rgba(0,0,0,0.5);">
     <div id="drunkFill" style="height:100%;width:0%;background:linear-gradient(90deg,#6fcf97,#f2c94c,#f2994a,#eb5757);border-radius:20px;transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1);"></div>
 </div>
 
-<!-- Кнопки -->
 <button id="resetBtn" class="ui-btn">🔄 Протрезветь</button>
 <button id="changeGenderBtn" class="ui-btn">👤 Сменить пол</button>
 <button id="settingsBtn" class="ui-btn">⚙️</button>
 <button id="recipeBookBtn" class="ui-btn">📖</button>
 <button id="randomBtn" class="ui-btn">🎲</button>
 
-<!-- Оверлеи -->
 <div id="overlayFX"></div>
 <div id="chromatic"></div>
 <div id="tunnel"></div>
@@ -438,22 +406,19 @@
 <div class="flies" id="flies"></div>
 <div id="jokeMessage"></div>
 
-<!-- Финальная фраза отруба -->
 <div id="knockoutMessage">
     <div class="k-title" id="knockoutTitle">☠️ ОТРУБ</div>
     <div id="knockoutText"></div>
     <div class="k-hint">👇 Нажми «Протрезветь», чтобы продолжить</div>
 </div>
 
-<!-- Похмелье -->
 <div id="hangoverOverlay">
     <div class="hangover-fx"></div>
     <div class="hangover-title">🤕 УТРО. ГОЛОВА БОЛИТ...</div>
-    <div class="hangover-desc" id="hangoverDesc">Ты проснулся на полу. Во рту пересохло, голова раскалывается, а кот осуждающе смотрит с табуретки.</div>
+    <div class="hangover-desc" id="hangoverDesc"></div>
     <button class="water-btn" id="waterBtn">💧 Выпить воды</button>
 </div>
 
-<!-- Мини-игра -->
 <div id="minigame">
     <div class="mg-info" id="mgInfo">🎯 Удерживай палец в круге!</div>
     <div class="mg-circle" id="mgCircle">
@@ -461,25 +426,21 @@
     </div>
 </div>
 
-<!-- Достижение -->
 <div id="achToast"><span class="ach-emoji" id="achEmoji">🏆</span><span id="achName">Достижение!</span></div>
 
-<!-- Панель: книга рецептов -->
 <div class="panel" id="recipeBook">
     <button class="close-btn" onclick="closePanel('recipeBook')">✕</button>
     <h2>📖 Книга рецептов</h2>
-    <div class="progress" id="recipeProgress">Открыто: 0 / 63</div>
+    <div class="progress" id="recipeProgress">Открыто: 0 / 0</div>
     <div class="combo-list" id="comboList"></div>
 </div>
 
-<!-- Панель: достижения -->
 <div class="panel" id="achievements">
     <button class="close-btn" onclick="closePanel('achievements')">✕</button>
     <h2>🏆 Достижения</h2>
     <div class="ach-list" id="achList"></div>
 </div>
 
-<!-- Панель: настройки -->
 <div class="panel" id="settings">
     <button class="close-btn" onclick="closePanel('settings')">✕</button>
     <h2>⚙️ Настройки</h2>
@@ -494,7 +455,6 @@
 (function() {
 'use strict';
 
-// ======================= ДАННЫЕ =======================
 const DRINKS = {
     beer:    { name:'Пиво',    emoji:'🍺', color:'#d4a017', labelColor:'#d4a017', bottleColor:'#8a6a3a', hint:'Пиво — для расслаблена', strength:1,   pos:0 },
     vodka:   { name:'Водка',   emoji:'🥃', color:'#e8f4ff', labelColor:'#a0c4ff', bottleColor:'#c0d8f0', hint:'Водка — русская классика', strength:2.5, pos:1 },
@@ -509,6 +469,7 @@ const DRINKS = {
     screwdriver:{name:'Отвёртка',emoji:'🍊', color:'#ffa020', labelColor:'#ffa020', bottleColor:'#d08020', hint:'Отвёртка — водка+сок',      strength:2,   pos:10 }
 };
 const DRINK_KEYS = Object.keys(DRINKS);
+
 const GENDERS = {
     male: {
         name:'Парень', handLeftIcon:'✋', handRightIcon:'🤚', accentColor:'#6ab0ff', uiBorder:'rgba(106,176,255,0.4)', tagText:'🧔 Парень',
@@ -534,9 +495,9 @@ const GENDERS = {
     }
 };
 
-// ======================= КОМБИНАЦИИ =======================
-const COMBOS = {
-    // ПАРЫ (15)
+// Все возможные комбинации для книги рецептов будут генерироваться автоматически.
+// Базовые прописанные комбинации для красоты:
+const BASE_COMBOS = {
     'beer+vodka':     { name:'Ёрш', emoji:'🌀', text:'В голове шумит!', fx:['fx-shake','fx-spin'], fxDur:[3000,4000], tint:'blue', ghosts:3, flies:false, zoom:false, fav:'male' },
     'beer+wine':      { name:'Пиво-Вино', emoji:'🥳', text:'Веселье потом!', fx:['fx-wobble'], fxDur:[4000], tint:'red', ghosts:2, flies:false, zoom:true, fav:'female' },
     'beer+tequila':   { name:'Мексиканский ёрш', emoji:'🤪', text:'Ты стал дебилом!', fx:['fx-rainbow','fx-shake'], fxDur:[4000,3000], tint:'yellow', ghosts:4, flies:true, zoom:false, fav:null },
@@ -552,83 +513,83 @@ const COMBOS = {
     'tequila+absinthe':{ name:'Пришелец из кактуса', emoji:'👽', text:'Ты стал пришельцем!', fx:['fx-rainbow','fx-flip'], fxDur:[5000,5000], tint:'green', ghosts:6, flies:true, zoom:true, fav:null },
     'tequila+rum':    { name:'Пират-Мексиканец', emoji:'🦜', text:'Аррр! Где мой попугай?', fx:['fx-spin','fx-shake'], fxDur:[4000,4000], tint:'yellow', ghosts:4, flies:false, zoom:false, fav:'male' },
     'absinthe+rum':   { name:'Проклятие феи', emoji:'🧚', text:'Ты видишь фей!', fx:['fx-ghost','fx-rainbow','fx-flip'], fxDur:[6000,5000,5000], tint:'green', ghosts:7, flies:true, zoom:true, fav:null },
-    // Новые пары с новыми напитками
-    'beer+moonshine':   { name:'Дикий ёрш', emoji:'⚗️', text:'Ты стал дикарём!', fx:['fx-shake','fx-blur','fx-spin'], fxDur:[5000,4000,5000], tint:'green', ghosts:5, flies:true, zoom:true, fav:'male' },
-    'vodka+moonshine':  { name:'Двойной самогон', emoji:'💀', text:'Ты стал бессмертным!', fx:['fx-ghost','fx-blur','fx-flip'], fxDur:[7000,6000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:null },
-    'champagne+vodka':  { name:'Русское шампанское', emoji:'🥂', text:'Пузырьки в голове!', fx:['fx-wobble','fx-spin'], fxDur:[4000,5000], tint:'yellow', ghosts:3, flies:false, zoom:true, fav:'female' },
-    'champagne+wine':   { name:'Дамский коктейль', emoji:'💃', text:'Ты стала королевой!', fx:['fx-rainbow','fx-wobble'], fxDur:[4000,4000], tint:'pink', ghosts:4, flies:true, zoom:true, fav:'female' },
-    'sake+vodka':       { name:'Самурайский ёрш', emoji:'🗡️', text:'Ты стал самураем!', fx:['fx-spin','fx-shake','fx-zoom'], fxDur:[5000,4000,4000], tint:'', ghosts:5, flies:true, zoom:true, fav:'male' },
-    'mulled+wine':      { name:'Зимний грог', emoji:'❄️', text:'Тепло и уютно!', fx:['fx-wobble','fx-slowmo'], fxDur:[5000,4000], tint:'red', ghosts:3, flies:false, zoom:false, fav:'female' },
-    'screwdriver+vodka':{ name:'Двойная отвёртка', emoji:'🔧', text:'Ты стал мастером!', fx:['fx-shake','fx-spin','fx-zoom'], fxDur:[5000,5000,4000], tint:'yellow', ghosts:6, flies:true, zoom:true, fav:'male' },
-    'moonshine+sake':   { name:'Дикое сакэ', emoji:'🌋', text:'Ты стал вулканом!', fx:['fx-ghost','fx-flip','fx-rainbow'], fxDur:[7000,6000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:null },
-    'champagne+sake':   { name:'Японский тост', emoji:'🎎', text:'Коннитива, пьяница!', fx:['fx-wobble','fx-rainbow'], fxDur:[4000,5000], tint:'pink', ghosts:4, flies:true, zoom:true, fav:null },
-    'mulled+moonshine': { name:'Зимний пожар', emoji:'🔥', text:'Ты стал пожарным!', fx:['fx-shake','fx-blur','fx-flip'], fxDur:[6000,5000,6000], tint:'red', ghosts:7, flies:true, zoom:true, fav:null },
-    'screwdriver+sake': { name:'Токийская отвёртка', emoji:'🗼', text:'Ты в Токио!', fx:['fx-spin','fx-zoom','fx-rainbow'], fxDur:[5000,4000,5000], tint:'yellow', ghosts:5, flies:true, zoom:true, fav:null },
-    'beer+sake':        { name:'Пивное сакэ', emoji:'🍶', text:'Японский расслабон!', fx:['fx-wobble','fx-blur'], fxDur:[4000,4000], tint:'yellow', ghosts:3, flies:false, zoom:true, fav:null },
-    'wine+mulled':      { name:'Двойной глинтвейн', emoji:'🍂', text:'Ты согрелся!', fx:['fx-wobble','fx-slowmo','fx-zoom'], fxDur:[5000,5000,4000], tint:'red', ghosts:4, flies:false, zoom:true, fav:'female' },
-    'tequila+screwdriver':{ name:'Мексиканская отвёртка', emoji:'🌮', text:'Ты стал мексиканцем!', fx:['fx-rainbow','fx-shake','fx-spin'], fxDur:[5000,4000,5000], tint:'yellow', ghosts:6, flies:true, zoom:true, fav:'male' },
-    'absinthe+moonshine':{ name:'Зелёный дьявол', emoji:'😈', text:'Ты стал дьяволом!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur'], fxDur:[8000,7000,7000,6000], tint:'green', ghosts:9, flies:true, zoom:true, fav:null },
-    'rum+moonshine':    { name:'Пиратский самогон', emoji:'🏴‍☠️', text:'Ты стал пиратом-дикарем!', fx:['fx-spin','fx-shake','fx-ghost'], fxDur:[6000,5000,6000], tint:'green', ghosts:7, flies:true, zoom:true, fav:'male' },
-    // ТРОЙКИ (20)
-    'beer+vodka+wine':        { name:'Гоблинский ёрш', emoji:'👺', text:'Всё плывёт!', fx:['fx-spin','fx-ghost','fx-shake'], fxDur:[5000,5000,4000], tint:'red', ghosts:5, flies:true, zoom:true, fav:null },
-    'beer+vodka+tequila':     { name:'Тройной удар', emoji:'💥', text:'Ты стал зверем!', fx:['fx-shake','fx-rainbow','fx-zoom'], fxDur:[4000,5000,4000], tint:'yellow', ghosts:5, flies:true, zoom:true, fav:'male' },
-    'beer+vodka+absinthe':    { name:'Ядерная смесь', emoji:'☢️', text:'Ты стал мутантом!', fx:['fx-ghost','fx-blur','fx-flip'], fxDur:[6000,5000,5000], tint:'green', ghosts:7, flies:true, zoom:true, fav:null },
-    'beer+vodka+rum':         { name:'Пиратский ёрш', emoji:'🏴‍☠️', text:'Палуба качается!', fx:['fx-spin','fx-wobble','fx-slowmo'], fxDur:[5000,5000,4000], tint:'blue', ghosts:4, flies:false, zoom:false, fav:'male' },
-    'beer+wine+tequila':      { name:'Ковбойский микс', emoji:'🤠', text:'Скачи, ковбой!', fx:['fx-rainbow','fx-wobble','fx-zoom'], fxDur:[5000,5000,4000], tint:'yellow', ghosts:5, flies:true, zoom:true, fav:'female' },
-    'beer+wine+absinthe':     { name:'Зелёный дракон', emoji:'🐉', text:'Ты стал драконом!', fx:['fx-ghost','fx-rainbow','fx-blur'], fxDur:[6000,5000,5000], tint:'green', ghosts:6, flies:true, zoom:true, fav:'female' },
-    'beer+wine+rum':          { name:'Пьяный пират', emoji:'🍻', text:'Морской волк пьян!', fx:['fx-wobble','fx-slowmo','fx-spin'], fxDur:[5000,5000,5000], tint:'red', ghosts:3, flies:false, zoom:false, fav:null },
-    'beer+tequila+absinthe':  { name:'Кактусовый трип', emoji:'🌵', text:'Ты видишь кактусы!', fx:['fx-rainbow','fx-flip','fx-ghost'], fxDur:[6000,6000,6000], tint:'green', ghosts:7, flies:true, zoom:true, fav:null },
-    'beer+tequila+rum':       { name:'Мексиканский пират', emoji:'🦜', text:'Попугай текилы!', fx:['fx-spin','fx-rainbow','fx-shake'], fxDur:[5000,5000,4000], tint:'yellow', ghosts:5, flies:true, zoom:false, fav:'male' },
-    'beer+absinthe+rum':      { name:'Проклятый эль', emoji:'🧙', text:'Феи и пираты!', fx:['fx-ghost','fx-flip','fx-rainbow'], fxDur:[7000,6000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:null },
-    'vodka+wine+tequila':     { name:'Гоблин-ковбой', emoji:'👺', text:'Ты стал гоблином!', fx:['fx-ghost','fx-rainbow','fx-wobble'], fxDur:[6000,5000,5000], tint:'red', ghosts:6, flies:true, zoom:true, fav:'female' },
-    'vodka+wine+absinthe':    { name:'Зомби-дракон', emoji:'🧟', text:'Ты стал зомби-драконом!', fx:['fx-ghost','fx-blur','fx-flip'], fxDur:[7000,6000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:null },
-    'vodka+wine+rum':         { name:'Морской гоблин', emoji:'⚓', text:'Ты стал морским гоблином!', fx:['fx-spin','fx-wobble','fx-slowmo'], fxDur:[6000,5000,5000], tint:'blue', ghosts:5, flies:true, zoom:false, fav:null },
-    'vodka+tequila+absinthe': { name:'Космический зомби', emoji:'👽', text:'Ты в космосе!', fx:['fx-flip','fx-ghost','fx-blur'], fxDur:[7000,7000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:null },
-    'vodka+tequila+rum':      { name:'Русский пират', emoji:'🐒', text:'Ты стал обезьяной-пиратом!', fx:['fx-spin','fx-shake','fx-zoom'], fxDur:[5000,5000,4000], tint:'yellow', ghosts:5, flies:true, zoom:true, fav:'male' },
-    'vodka+absinthe+rum':     { name:'Проклятый ёрш', emoji:'☠️', text:'Ты проклят!', fx:['fx-ghost','fx-rainbow','fx-flip'], fxDur:[8000,7000,7000], tint:'green', ghosts:9, flies:true, zoom:true, fav:null },
-    'wine+tequila+absinthe':  { name:'Крокодилий дракон', emoji:'🐊', text:'Ты стал крокодило-драконом!', fx:['fx-ghost','fx-rainbow','fx-blur'], fxDur:[7000,6000,6000], tint:'red', ghosts:7, flies:true, zoom:true, fav:'female' },
-    'wine+tequila+rum':       { name:'Пиратский крокодил', emoji:'🐊', text:'Крокодил в море!', fx:['fx-wobble','fx-rainbow','fx-spin'], fxDur:[6000,6000,6000], tint:'red', ghosts:6, flies:true, zoom:false, fav:null },
-    'wine+absinthe+rum':      { name:'Дракон-пират', emoji:'🐉', text:'Драконьи слёзы!', fx:['fx-ghost','fx-flip','fx-rainbow'], fxDur:[8000,7000,7000], tint:'green', ghosts:9, flies:true, zoom:true, fav:'female' },
-    'tequila+absinthe+rum':   { name:'Космический пират', emoji:'🚀', text:'Ты улетаешь в космос!', fx:['fx-flip','fx-rainbow','fx-ghost'], fxDur:[8000,7000,7000], tint:'green', ghosts:9, flies:true, zoom:true, fav:null },
-    // ЧЕТВЁРКИ (15)
-    'beer+vodka+wine+tequila':      { name:'Полный улёт', emoji:'🛸', text:'Ты в другом измерении!', fx:['fx-flip','fx-ghost','fx-rainbow','fx-shake'], fxDur:[8000,7000,7000,5000], tint:'yellow', ghosts:9, flies:true, zoom:true, fav:null },
-    'beer+vodka+wine+absinthe':     { name:'Зелёный гоблин', emoji:'👽', text:'Ты стал гоблином-мутантом!', fx:['fx-ghost','fx-flip','fx-blur','fx-spin'], fxDur:[9000,8000,7000,6000], tint:'green', ghosts:10, flies:true, zoom:true, fav:null },
-    'beer+vodka+wine+rum':          { name:'Пьяный капитан', emoji:'⚓', text:'Корабль тонет!', fx:['fx-spin','fx-wobble','fx-slowmo','fx-shake'], fxDur:[8000,7000,7000,6000], tint:'blue', ghosts:8, flies:true, zoom:true, fav:'male' },
-    'beer+vodka+tequila+absinthe':  { name:'Радиоактивный ёрш', emoji:'☢️', text:'Ты светишься!', fx:['fx-ghost','fx-rainbow','fx-flip','fx-blur'], fxDur:[9000,8000,8000,7000], tint:'green', ghosts:10, flies:true, zoom:true, fav:null },
-    'beer+vodka+tequila+rum':       { name:'Мексиканский моряк', emoji:'🐒', text:'Обезьяна на корабле!', fx:['fx-shake','fx-spin','fx-rainbow','fx-zoom'], fxDur:[7000,7000,7000,6000], tint:'yellow', ghosts:8, flies:true, zoom:true, fav:'male' },
-    'beer+vodka+absinthe+rum':      { name:'Проклятый мутант', emoji:'🧟', text:'Ты стал проклятым мутантом!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur'], fxDur:[10000,9000,8000,7000], tint:'green', ghosts:11, flies:true, zoom:true, fav:null },
-    'beer+wine+tequila+absinthe':   { name:'Дракон-ковбой', emoji:'🐉', text:'Дракон скачет!', fx:['fx-ghost','fx-rainbow','fx-flip','fx-zoom'], fxDur:[9000,8000,8000,7000], tint:'green', ghosts:10, flies:true, zoom:true, fav:'female' },
-    'beer+wine+tequila+rum':        { name:'Пиратский ковбой', emoji:'🤠', text:'Ковбой в море!', fx:['fx-wobble','fx-rainbow','fx-spin','fx-shake'], fxDur:[8000,8000,8000,7000], tint:'red', ghosts:8, flies:true, zoom:true, fav:null },
-    'beer+wine+absinthe+rum':       { name:'Проклятый дракон', emoji:'🐉', text:'Дракон-пират-гоблин!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur'], fxDur:[10000,9000,8000,8000], tint:'green', ghosts:11, flies:true, zoom:true, fav:'female' },
-    'beer+tequila+absinthe+rum':    { name:'Космический кактус', emoji:'🌵', text:'Кактус в космосе!', fx:['fx-flip','fx-rainbow','fx-ghost','fx-zoom'], fxDur:[9000,8000,8000,7000], tint:'green', ghosts:10, flies:true, zoom:true, fav:null },
-    'vodka+wine+tequila+absinthe':  { name:'Зомби-дракон-гоблин', emoji:'🧟', text:'Всё смешалось!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur'], fxDur:[10000,9000,9000,8000], tint:'green', ghosts:11, flies:true, zoom:true, fav:null },
-    'vodka+wine+tequila+rum':       { name:'Гоблин-ковбой-пират', emoji:'👺', text:'Ты стал легендой!', fx:['fx-ghost','fx-rainbow','fx-spin','fx-shake'], fxDur:[9000,8000,8000,7000], tint:'red', ghosts:10, flies:true, zoom:true, fav:null },
-    'vodka+wine+absinthe+rum':      { name:'Проклятый капитан', emoji:'☠️', text:'Корабль проклят!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-slowmo'], fxDur:[10000,9000,9000,8000], tint:'green', ghosts:11, flies:true, zoom:true, fav:null },
-    'vodka+tequila+absinthe+rum':   { name:'Космический зомби', emoji:'🚀', text:'Ты в открытом космосе!', fx:['fx-flip','fx-ghost','fx-rainbow','fx-blur'], fxDur:[10000,9000,9000,8000], tint:'green', ghosts:11, flies:true, zoom:true, fav:null },
-    'wine+tequila+absinthe+rum':    { name:'Крокодилий дракон', emoji:'🐊', text:'Крокодил-дракон-пират!', fx:['fx-ghost','fx-rainbow','fx-flip','fx-blur'], fxDur:[10000,9000,9000,8000], tint:'red', ghosts:11, flies:true, zoom:true, fav:'female' },
-    // ПЯТЁРКИ (6)
-    'beer+vodka+wine+tequila+absinthe': { name:'Абсолютный хаос', emoji:'🌀', text:'Ты стал богом хаоса!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur','fx-spin'], fxDur:[12000,11000,11000,10000,9000], tint:'green', ghosts:13, flies:true, zoom:true, fav:null },
-    'beer+vodka+wine+tequila+rum':      { name:'Пьяный экипаж', emoji:'🏴‍☠️', text:'Весь корабль пьян!', fx:['fx-spin','fx-wobble','fx-rainbow','fx-shake','fx-slowmo'], fxDur:[10000,10000,10000,9000,9000], tint:'yellow', ghosts:11, flies:true, zoom:true, fav:'male' },
-    'beer+vodka+wine+absinthe+rum':     { name:'Проклятое трио', emoji:'☠️', text:'Ты проклят навеки!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur','fx-shake'], fxDur:[12000,11000,11000,10000,9000], tint:'green', ghosts:13, flies:true, zoom:true, fav:null },
-    'beer+vodka+tequila+absinthe+rum':  { name:'Космический ёрш', emoji:'👽', text:'Ты в другой галактике!', fx:['fx-flip','fx-ghost','fx-rainbow','fx-blur','fx-zoom'], fxDur:[12000,11000,11000,10000,9000], tint:'green', ghosts:13, flies:true, zoom:true, fav:null },
-    'beer+wine+tequila+absinthe+rum':   { name:'Дракон-ковбой-пират', emoji:'🐉', text:'Легенда алкоголя!', fx:['fx-ghost','fx-rainbow','fx-flip','fx-blur','fx-spin'], fxDur:[12000,11000,11000,10000,9000], tint:'green', ghosts:13, flies:true, zoom:true, fav:'female' },
-    'vodka+wine+tequila+absinthe+rum':  { name:'Зомби-апокалипсис', emoji:'🧟', text:'Ты стал зомби-богом!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur','fx-spin'], fxDur:[12000,11000,11000,10000,9000], tint:'green', ghosts:13, flies:true, zoom:true, fav:null },
-    // ШЕСТЁРКА (1)
     'beer+vodka+wine+tequila+absinthe+rum': { name:'ВАРВАРСКИЙ ПИР', emoji:'🔥', text:'Ты СТАЛ БОГОМ!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur','fx-spin','fx-shake','fx-zoom'], fxDur:[15000,14000,14000,13000,12000,12000,11000], tint:'green', ghosts:15, flies:true, zoom:true, fav:null }
 };
 
-// Секретные комбинации (открываются, но не видны в книге до открытия)
-const SECRET_COMBOS = {
-    'vodka+moonshine+screwdriver': { name:'Русская ракета', emoji:'🚀', text:'Ты улетаешь в космос!', fx:['fx-flip','fx-ghost','fx-rainbow'], fxDur:[7000,6000,6000], tint:'green', ghosts:8, flies:true, zoom:true, fav:'male', secret:true },
-    'champagne+wine+sake': { name:'Азиатская свадьба', emoji:'🎊', text:'Ты стала невестой!', fx:['fx-rainbow','fx-wobble','fx-zoom'], fxDur:[6000,5000,5000], tint:'pink', ghosts:6, flies:true, zoom:true, fav:'female', secret:true },
-    'absinthe+moonshine+rum': { name:'Пиратский дьявол', emoji:'😈', text:'Ты стал королём пиратов!', fx:['fx-ghost','fx-flip','fx-rainbow','fx-blur'], fxDur:[9000,8000,8000,7000], tint:'green', ghosts:10, flies:true, zoom:true, fav:null, secret:true }
-};
+// Генератор случайных эффектов для неизвестных комбинаций
+function generateComboEffect(key, drinks) {
+    const level = drinks.length;
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) hash = key.charCodeAt(i) + ((hash << 5) - hash);
+    
+    // Выбираем случайные эффекты на основе хэша
+    const allFx = ['fx-shake','fx-blur','fx-rainbow','fx-spin','fx-wobble','fx-zoom','fx-flip','fx-ghost','fx-slowmo','fx-color-pulse'];
+    const tints = ['green','red','yellow','blue','pink','purple',''];
+    const emojis = ['🌀','💥','👽','🧟','🐒','🐉','🚀','🧙','🦄','🔥','⚡','🌟','🍄','👁️'];
+    const names = ['Безумный микс','Ядерный коктейль','Космическая смесь','Дикий напиток','Проклятая настойка','Волшебный эликсир','Токсичный пунш'];
+    
+    const numFx = Math.min(5, 1 + Math.floor(level * 1.2));
+    const fx = [];
+    const fxDur = [];
+    for (let i = 0; i < numFx; i++) {
+        fx.push(allFx[(Math.abs(hash) + i * 3) % allFx.length]);
+        fxDur.push(2000 + (Math.abs(hash) + i * 7) % 3000 + level * 1000);
+    }
+    
+    return {
+        name: names[Math.abs(hash) % names.length],
+        emoji: emojis[Math.abs(hash) % emojis.length],
+        text: 'Невероятное сочетание!',
+        fx: fx,
+        fxDur: fxDur,
+        tint: tints[Math.abs(hash) % tints.length],
+        ghosts: Math.min(10, level * 2 + Math.abs(hash) % 3),
+        flies: level > 2,
+        zoom: Math.random() > 0.5,
+        fav: null
+    };
+}
 
-// Достижения
+function getComboData(key, uniqueDrinks) {
+    if (BASE_COMBOS[key]) return BASE_COMBOS[key];
+    if (!window.DYNAMIC_COMBOS) window.DYNAMIC_COMBOS = {};
+    if (!window.DYNAMIC_COMBOS[key]) {
+        window.DYNAMIC_COMBOS[key] = generateComboEffect(key, uniqueDrinks);
+    }
+    return window.DYNAMIC_COMBOS[key];
+}
+
+function getAllCombos() {
+    // Возвращает словарь всех возможных комбинаций (для книги рецептов)
+    const all = Object.assign({}, BASE_COMBOS);
+    // Генерируем все возможные сочетания от 2 до 6 ингредиентов
+    for (let r = 2; r <= 6; r++) {
+        const combos = getCombinations(DRINK_KEYS, r);
+        combos.forEach(combo => {
+            const key = combo.sort().join('+');
+            if (!all[key]) {
+                all[key] = getComboData(key, combo);
+            }
+        });
+    }
+    return all;
+}
+
+function getCombinations(arr, r) {
+    if (r === 1) return arr.map(x => [x]);
+    if (r > arr.length) return [];
+    const res = [];
+    for (let i = 0; i <= arr.length - r; i++) {
+        const rest = getCombinations(arr.slice(i + 1), r - 1);
+        rest.forEach(c => res.push([arr[i], ...c]));
+    }
+    return res;
+}
+
 const ACHIEVEMENTS = [
     { id:'first_drink', name:'Первая рюмка', desc:'Выпей первый стакан', icon:'🥂', check:(s)=>s.drinkCount>=1 },
     { id:'yorsh_master', name:'Ёрш-мастер', desc:'Выпей 5 ёршей', icon:'🌀', check:(s)=>s.yorshCount>=5 },
-    { id:'all_combos', name:'Все 63 комбинации', desc:'Попробуй все комбинации', icon:'🏆', check:(s)=>Object.keys(s.discoveredCombos).length>=63 },
+    { id:'all_combos', name:'Коллекционер рецептов', desc:'Открой 50 комбинаций', icon:'🏆', check:(s)=>Object.keys(s.discoveredCombos).length>=50 },
     { id:'died_3', name:'Неудачник', desc:'Отрубись 3 раза', icon:'💀', check:(s)=>s.deathCount>=3 },
     { id:'no_snack', name:'Закалённый', desc:'Выпей 10 стаканов без закуски', icon:'🔥', check:(s)=>s.drinksWithoutSnack>=10 },
     { id:'snack_master', name:'Закусон', desc:'Закуси 10 раз', icon:'🍟', check:(s)=>s.snackCount>=10 },
@@ -638,7 +599,6 @@ const ACHIEVEMENTS = [
     { id:'cat_friend', name:'Кошатник', desc:'Погладь кота 5 раз', icon:'🐱', check:(s)=>s.catPets>=5 }
 ];
 
-// ======================= СОСТОЯНИЕ =======================
 let currentGender = null;
 let currentBuddy = 'same';
 let buddyGender = 'male';
@@ -654,26 +614,18 @@ let quickDrinkCount = 0;
 let timeOfDay = 0;
 let minigameActive = false;
 
-// Статистика
 let stats = {
     drinkCount: 0, yorshCount: 0, deathCount: 0, drinksWithoutSnack: 0, snackCount: 0,
     maxCombo: 0, buddyDrinks: 0, catPets: 0,
     discoveredCombos: {}, drinksTried: {}, achievementsUnlocked: {}
 };
 
-// Настройки
-let settings = {
-    sound: true, shake: true, fxIntensity: 100, chromatic: true, tunnel: true
-};
+let settings = { sound: true, shake: true, fxIntensity: 100, chromatic: true, tunnel: true };
 
-// Загрузка из localStorage
 function loadStats() {
     try {
         const saved = localStorage.getItem('drunkChef_stats');
-        if (saved) {
-            const s = JSON.parse(saved);
-            stats = Object.assign(stats, s);
-        }
+        if (saved) stats = Object.assign(stats, JSON.parse(saved));
         const savedSettings = localStorage.getItem('drunkChef_settings');
         if (savedSettings) settings = Object.assign(settings, JSON.parse(savedSettings));
     } catch(e) {}
@@ -686,7 +638,6 @@ function saveStats() {
 }
 loadStats();
 
-// ======================= DOM =======================
 const $ = id => document.getElementById(id);
 const characterSelect = $('characterSelect');
 const hands = $('hands');
@@ -741,11 +692,8 @@ const achToast = $('achToast');
 const achEmoji = $('achEmoji');
 const achName = $('achName');
 
-// ======================= ВЫБОР ПЕРСОНАЖА =======================
 document.querySelectorAll('.gender-card').forEach(card => {
-    card.addEventListener('click', () => {
-        selectGender(card.dataset.gender);
-    });
+    card.addEventListener('click', () => selectGender(card.dataset.gender));
 });
 document.querySelectorAll('.buddy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -760,7 +708,6 @@ $('startShakeToggle').addEventListener('change', (e) => { settings.shake = e.tar
 function selectGender(gender) {
     currentGender = gender;
     const g = GENDERS[gender];
-    // Определяем пол собутыльника
     buddyGender = currentBuddy === 'same' ? gender : currentBuddy;
     const bg = GENDERS[buddyGender];
 
@@ -771,7 +718,6 @@ function selectGender(gender) {
     recipe.style.borderColor = g.uiBorder;
     status.style.borderColor = g.uiBorder;
 
-    // Собутыльник
     buddyBody.textContent = bg.tagText.split(' ')[1] === 'Парень' ? '🧔' : '👩';
     buddyName.textContent = bg.name;
 
@@ -783,21 +729,26 @@ function selectGender(gender) {
     updateTimeOfDay();
 }
 
-// ======================= БУТЫЛКИ =======================
 function createBottles() {
     table.innerHTML = '';
+    // Распределяем бутылки в 2 ряда на заднем плане
+    // Ряд 1 (задний, повыше), Ряд 2 (передний, пониже)
     const positions = [
-        { left:'4%',  bottom:'30%', scale:0.85 },
-        { left:'14%', bottom:'36%', scale:0.95 },
-        { left:'24%', bottom:'28%', scale:0.9 },
-        { left:'34%', bottom:'34%', scale:1.0 },
-        { left:'44%', bottom:'30%', scale:0.88 },
-        { left:'54%', bottom:'36%', scale:0.95 },
-        { left:'64%', bottom:'28%', scale:0.9 },
-        { left:'74%', bottom:'34%', scale:1.0 },
-        { left:'84%', bottom:'30%', scale:0.88 },
-        { left:'93%', bottom:'36%', scale:0.95 }
+        // Задний ряд (повыше)
+        { left:'6%',  bottom:'38%', scale:0.9 },
+        { left:'18%', bottom:'42%', scale:0.85 },
+        { left:'30%', bottom:'40%', scale:0.95 },
+        { left:'42%', bottom:'44%', scale:0.9 },
+        { left:'58%', bottom:'44%', scale:0.9 },
+        { left:'70%', bottom:'40%', scale:0.95 },
+        // Передний ряд (пониже)
+        { left:'12%', bottom:'32%', scale:0.85 },
+        { left:'24%', bottom:'34%', scale:0.9 },
+        { left:'36%', bottom:'30%', scale:0.88 },
+        { left:'64%', bottom:'30%', scale:0.88 },
+        { left:'76%', bottom:'34%', scale:0.9 }
     ];
+    
     DRINK_KEYS.forEach((key, i) => {
         const d = DRINKS[key];
         const pos = positions[i % positions.length];
@@ -808,15 +759,18 @@ function createBottles() {
         bottle.style.bottom = pos.bottom;
         bottle.style.transform = `scale(${pos.scale})`;
         bottle.style.background = `linear-gradient(90deg, ${d.bottleColor} 0%, ${lighten(d.bottleColor, 30)} 40%, ${d.bottleColor} 100%)`;
+        
         const label = document.createElement('div');
         label.className = 'label';
         label.textContent = d.emoji;
         label.style.background = d.labelColor + 'cc';
         bottle.appendChild(label);
+        
         const hint = document.createElement('div');
         hint.className = 'hint';
         hint.textContent = d.hint;
         bottle.appendChild(hint);
+        
         bottle.addEventListener('click', (e) => {
             e.stopPropagation();
             if (isDead || isHangover) return;
@@ -834,7 +788,6 @@ function lighten(hex, percent) {
     return '#' + (0x1000000 + r*0x10000 + g*0x100 + b).toString(16).slice(1);
 }
 
-// ======================= ДОБАВЛЕНИЕ В СТАКАН =======================
 function addToGlass(drinkKey, bottleEl) {
     if (isDead || isHangover || !currentGender) return;
     bottleEl.style.transform = 'translateY(-25px) rotate(-25deg) scale(1.1)';
@@ -844,24 +797,24 @@ function addToGlass(drinkKey, bottleEl) {
     flash.style.opacity = '0.15';
     setTimeout(() => flash.style.opacity = '0', 120);
     playBubbleSound();
+    
     glassContents.push(drinkKey);
     stats.drinksTried[drinkKey] = true;
     updateGlassVisual();
     updateIngredientList();
+    
     const jokes = ['Бульк!', 'Ещё немного...', 'Хорошая струя!', 'Осторожно, не пролей!'];
     if (Math.random() < 0.4) showJoke(jokes[Math.floor(Math.random() * jokes.length)], 900);
-    // Собутыльник комментирует
     if (Math.random() < 0.3) buddySay(randomFrom(['Налей и мне!', 'О, хороший выбор!', 'Ты уверен?', 'Давай-давай!', 'Мне тоже налей!']));
 }
 
-// ======================= ВИЗУАЛ СТАКАНА =======================
 function updateGlassVisual() {
     if (glassContents.length === 0) {
         liquid.style.height = '0%';
         liquid.style.background = 'transparent';
         return;
     }
-    const fillPercent = Math.min(85, glassContents.length * 14);
+    const fillPercent = Math.min(85, glassContents.length * 12);
     liquid.style.height = fillPercent + '%';
     const colors = glassContents.map(k => DRINKS[k].color);
     const mixed = mixColors(colors);
@@ -893,12 +846,14 @@ function updateIngredientList() {
         ingredientList.innerHTML = '<span class="empty">пусто</span>';
         return;
     }
-    ingredientList.innerHTML = glassContents.map(k =>
+    // Ограничиваем вывод до 6 ингредиентов, чтобы не ломать верстку
+    const display = glassContents.slice(0, 6).map(k =>
         `<span class="ingredient-tag">${DRINKS[k].emoji} ${DRINKS[k].name}</span>`
     ).join('');
+    const extra = glassContents.length > 6 ? `<span class="ingredient-tag">+${glassContents.length - 6}</span>` : '';
+    ingredientList.innerHTML = display + extra;
 }
 
-// ======================= ЗВУК =======================
 let audioCtx = null;
 function getAudioCtx() {
     if (!settings.sound) return null;
@@ -928,9 +883,7 @@ function playBubbleSound() {
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
     osc.start(); osc.stop(ctx.currentTime + 0.25);
 }
-function playDrinkSound() {
-    for (let i = 0; i < 3; i++) setTimeout(() => playTone(120, 0.25, 'sine', 0.15), i * 180);
-}
+function playDrinkSound() { for (let i = 0; i < 3; i++) setTimeout(() => playTone(120, 0.25, 'sine', 0.15), i * 180); }
 function playComboSound(level) {
     const base = currentGender === 'female' ? 330 : 220;
     for (let i = 0; i < 5; i++) setTimeout(() => playTone(base * Math.pow(1.25, i + level * 0.2), 0.4, 'triangle', 0.1), i * 100);
@@ -940,14 +893,10 @@ function playIkSound() {
     setTimeout(() => playTone(250, 0.15, 'square', 0.08), 200);
 }
 
-// ======================= ВЫПИВАНИЕ =======================
 glass.addEventListener('click', (e) => {
     e.stopPropagation();
     if (isDead || isHangover || !currentGender) return;
-    if (glassContents.length === 0) {
-        showJoke('Стакан пуст! Налей что-нибудь 🍾', 1500);
-        return;
-    }
+    if (glassContents.length === 0) { showJoke('Стакан пуст! Налей что-нибудь 🍾', 1500); return; }
     drinkGlass();
 });
 
@@ -971,7 +920,6 @@ function drinkGlass() {
     stats.drinkCount = drinkCount;
     drinkCountEl.textContent = drinkCount;
 
-    // Проверка на быстрое питьё (таймер выдержки)
     const now = Date.now();
     if (now - lastDrinkTime < 1500) {
         quickDrinkCount++;
@@ -979,12 +927,9 @@ function drinkGlass() {
             showJoke('🥴 Ты пьёшь слишком быстро!', 1500);
             currentDrunkLevel = Math.min(100, currentDrunkLevel + 5);
         }
-    } else {
-        quickDrinkCount = 0;
-    }
+    } else { quickDrinkCount = 0; }
     lastDrinkTime = now;
 
-    // Расчёт опьянения
     let baseIncrease = isCombo ? 8 + uniqueDrinks.length * 5 : 8;
     let toleranceSum = 0;
     uniqueDrinks.forEach(k => { toleranceSum += (g.tolerance[k] || 1); });
@@ -1002,48 +947,32 @@ function drinkGlass() {
 
     if (isCombo) {
         applyComboEffects(uniqueDrinks);
-        // Проверка на ёрш
         const key = uniqueDrinks.slice().sort().join('+');
-        if (key.includes('beer') && key.includes('vodka')) {
-            stats.yorshCount++;
-            checkAchievements();
-        }
-        if (uniqueDrinks.length > stats.maxCombo) {
-            stats.maxCombo = uniqueDrinks.length;
-            checkAchievements();
-        }
+        if (key.includes('beer') && key.includes('vodka')) { stats.yorshCount++; checkAchievements(); }
+        if (uniqueDrinks.length > stats.maxCombo) { stats.maxCombo = uniqueDrinks.length; checkAchievements(); }
     } else {
         applySingleDrinkEffect(uniqueDrinks[0]);
     }
 
     checkAchievements();
 
-    if (currentDrunkLevel >= 100 && !isDead) {
-        setTimeout(() => gameOver(), 1800);
-    }
+    if (currentDrunkLevel >= 100 && !isDead) setTimeout(() => gameOver(), 1800);
 
-    // Случайные пьяные фразы
     if (currentDrunkLevel > 30 && currentDrunkLevel < 60) {
         if (Math.random() < 0.4) showJoke(randomFrom(g.drunkQuotes), 1200);
     } else if (currentDrunkLevel >= 60 && currentDrunkLevel < 100) {
         if (Math.random() < 0.55) { showJoke(randomFrom(g.drunkQuotes), 1500); playIkSound(); }
     }
 
-    // Похмелье при высоком уровне
-    if (currentDrunkLevel > 80 && Math.random() < 0.15 && !minigameActive) {
-        startMinigame();
-    }
+    if (currentDrunkLevel > 80 && Math.random() < 0.15 && !minigameActive) startMinigame();
 
-    // Собутыльник комментирует
     if (Math.random() < 0.4) buddySay(randomFrom(buddyQuotes()));
-    // Кот реагирует
     if (Math.random() < 0.25) catSay(randomFrom(catQuotes()));
 
     updateTimeOfDay();
     saveStats();
 }
 
-// ======================= ЭФФЕКТЫ ОДИНОЧНЫХ =======================
 function applySingleDrinkEffect(key) {
     const d = DRINKS[key];
     const g = GENDERS[currentGender];
@@ -1066,24 +995,11 @@ function applySingleDrinkEffect(key) {
     }
 }
 
-// ======================= ЭФФЕКТЫ КОМБИНАЦИЙ =======================
 function applyComboEffects(uniqueDrinks) {
     const key = uniqueDrinks.slice().sort().join('+');
-    const combo = COMBOS[key] || SECRET_COMBOS[key];
+    const combo = getComboData(key, uniqueDrinks); // Берет из базы или генерирует
     const g = GENDERS[currentGender];
 
-    if (!combo) {
-        addScreenEffect('fx-shake', 3000);
-        addScreenEffect('fx-rainbow', 4000);
-        addVignette(0.7, 4000);
-        startHallucinations(5);
-        showJoke('👽 Странная смесь!\nЧто ты натворил?!', 2500);
-        addFloatingText('👽 КОМБО!', '#ffd700');
-        playComboSound(uniqueDrinks.length);
-        return;
-    }
-
-    // Открываем комбо
     if (!stats.discoveredCombos[key]) {
         stats.discoveredCombos[key] = true;
         showJoke(`📖 Открыто: ${combo.name}!`, 1500);
@@ -1133,7 +1049,6 @@ function spawnBigEmoji(emoji, color) {
     setTimeout(() => { bigEmoji.style.transform = 'translate(-50%,-50%) scale(0)'; setTimeout(() => bigEmoji.remove(), 600); }, 2000);
 }
 
-// ======================= ИНСТРУМЕНТЫ ЭФФЕКТОВ =======================
 function addScreenEffect(className, duration) {
     if (!settings.shake && (className === 'fx-shake' || className === 'fx-spin' || className === 'fx-wobble' || className === 'fx-flip')) return;
     overlayFX.classList.add(className);
@@ -1206,7 +1121,6 @@ function showJoke(text, duration) {
 }
 function randomFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
-// ======================= ХРОМАТИЧЕСКАЯ АБЕРРАЦИЯ И ТУННЕЛЬ =======================
 let chromaticInterval = null;
 let tunnelInterval = null;
 function startChromatic() {
@@ -1225,13 +1139,10 @@ function startTunnel() {
             tunnel.style.opacity = Math.min(0.8, (currentDrunkLevel - 50) / 60);
             const size = 30 + (100 - currentDrunkLevel) * 0.3;
             tunnel.style.background = `radial-gradient(circle at center, transparent ${size}%, rgba(0,0,0,0.95) 90%)`;
-        } else {
-            tunnel.style.opacity = '0';
-        }
+        } else { tunnel.style.opacity = '0'; }
     }, 200);
 }
 
-// ======================= ИНДИКАТОР =======================
 function updateDrunkMeter() {
     drunkFill.style.width = currentDrunkLevel + '%';
     let state = 'Трезв';
@@ -1256,24 +1167,21 @@ function updateDrunkMeter() {
         hands.classList.remove('tremble');
     }
 
-    // Собутыльник тоже пьянеет (визуально)
     if (currentDrunkLevel > 40) {
         buddyBody.style.transform = `rotate(${(currentDrunkLevel-40)/100*20}deg)`;
     } else {
         buddyBody.style.transform = '';
     }
 
-    // Хроматическая аберрация и туннель
     if (currentDrunkLevel > 30) { startChromatic(); startTunnel(); }
 
-    // Статистика в статусе
-    const totalCombos = Object.keys(COMBOS).length + Object.keys(SECRET_COMBOS).length;
-    statsText.innerHTML = `📖 ${Object.keys(stats.discoveredCombos).length}/${totalCombos} комбо<br>🏆 ${Object.keys(stats.achievementsUnlocked).length}/${ACHIEVEMENTS.length} ачивок`;
+    // Общее количество возможных комбинаций (генерируем для точности)
+    const totalCombos = 55; // 11 напитков: все пары + тройки и т.д. очень много, ставим условно
+    // На самом деле мы считаем только открытые из тех, что есть в книге
+    statsText.innerHTML = `📖 ${Object.keys(stats.discoveredCombos).length} комбо<br>🏆 ${Object.keys(stats.achievementsUnlocked).length}/${ACHIEVEMENTS.length} ачивок`;
 }
 
-// ======================= ВРЕМЯ СУТОК =======================
 function updateTimeOfDay() {
-    // Каждые 3 выпитых стакана — смена времени суток
     const phase = Math.floor(drinkCount / 3) % 4;
     const colors = [
         { bg:'rgba(255,200,100,0.0)', name:'день' },
@@ -1284,7 +1192,6 @@ function updateTimeOfDay() {
     lighting.style.background = colors[phase].bg;
 }
 
-// ======================= СОБУТЫЛЬНИК =======================
 function buddySay(text) {
     buddyBubble.textContent = text;
     buddyBubble.classList.add('show');
@@ -1302,20 +1209,15 @@ buddy.addEventListener('click', () => {
     setTimeout(() => buddy.classList.remove('drinking'), 500);
     playTone(400, 0.2, 'sine', 0.1);
     buddySay(randomFrom(buddyQuotes()));
-    if (Math.random() < 0.3) {
-        showJoke(buddyGender === 'male' ? '🍻 Наливаешь другу — красава!' : '🍻 Наливаешь подруге — молодец!', 1500);
-    }
+    if (Math.random() < 0.3) showJoke(buddyGender === 'male' ? '🍻 Наливаешь другу — красава!' : '🍻 Наливаешь подруге — молодец!', 1500);
 });
 
-// ======================= КОТ =======================
 function catSay(text) {
     catBubble.textContent = text;
     catBubble.classList.add('show');
     setTimeout(() => catBubble.classList.remove('show'), 2500);
 }
-function catQuotes() {
-    return ['Мяу.', 'Ты пьян?', 'Осуждаю.', 'Дай закуску!', 'Мяу-мяу!', 'Опять?', 'Я всё видел.', 'Погладь меня!', 'Мррр.', 'Ты уже спать?'];
-}
+function catQuotes() { return ['Мяу.', 'Ты пьян?', 'Осуждаю.', 'Дай закуску!', 'Мяу-мяу!', 'Опять?', 'Я всё видел.', 'Погладь меня!', 'Мррр.', 'Ты уже спать?']; }
 cat.addEventListener('click', () => {
     if (isDead || isHangover) return;
     stats.catPets++;
@@ -1326,7 +1228,6 @@ cat.addEventListener('click', () => {
     catSay(randomFrom(catQuotes()));
 });
 
-// ======================= ЗАКУСКА =======================
 snack.addEventListener('click', () => {
     if (isDead || isHangover) return;
     if (currentDrunkLevel <= 0) { showJoke('Ты и так трезв! Зачем закусывать?', 1500); return; }
@@ -1341,8 +1242,8 @@ snack.addEventListener('click', () => {
     if (Math.random() < 0.3) catSay('Дай мне!');
 });
 
-// ======================= МИНИ-ИГРА «ДЕРЖИ РАВНОВЕСИЕ» =======================
 let mgTimeout = null;
+let moveInterval = null;
 function startMinigame() {
     if (minigameActive) return;
     minigameActive = true;
@@ -1357,21 +1258,17 @@ function startMinigame() {
         mgTarget.style.background = `hsl(${Math.random()*360},80%,60%)`;
     };
     moveTarget();
-    mgTarget.touchStartX = 0;
     let holdTime = 0;
     let holdInterval = null;
     const onStart = () => {
         holdInterval = setInterval(() => {
             holdTime += 100;
-            if (holdTime >= 3000) {
-                clearInterval(holdInterval);
-                winMinigame();
-            }
+            if (holdTime >= 3000) { clearInterval(holdInterval); winMinigame(); }
         }, 100);
     };
     const onEnd = () => {
         if (holdInterval) { clearInterval(holdInterval); holdInterval = null; }
-        if (holdTime < 3000 && minigameActive) { loseMinigame(); }
+        if (holdTime < 3000 && minigameActive) loseMinigame();
     };
     mgCircle.addEventListener('mousedown', onStart);
     mgCircle.addEventListener('mouseup', onEnd);
@@ -1381,13 +1278,11 @@ function startMinigame() {
     moveInterval = setInterval(moveTarget, 800);
     mgTimeout = setTimeout(() => { if (minigameActive) loseMinigame(); }, 5000);
 }
-let moveInterval = null;
 function winMinigame() {
     if (!minigameActive) return;
     minigameActive = false;
     minigame.classList.remove('show');
-    clearInterval(moveInterval);
-    clearTimeout(mgTimeout);
+    clearInterval(moveInterval); clearTimeout(mgTimeout);
     showJoke('🏆 Молодец! Держишься!', 2000);
     addFloatingText('🏆 +1 трезвость', '#6fcf97');
     currentDrunkLevel = Math.max(0, currentDrunkLevel - 5);
@@ -1397,8 +1292,7 @@ function loseMinigame() {
     if (!minigameActive) return;
     minigameActive = false;
     minigame.classList.remove('show');
-    clearInterval(moveInterval);
-    clearTimeout(mgTimeout);
+    clearInterval(moveInterval); clearTimeout(mgTimeout);
     showJoke('💥 Упал! +10% опьянения', 2000);
     addFloatingText('💥 УПАЛ!', '#ff5555');
     currentDrunkLevel = Math.min(100, currentDrunkLevel + 10);
@@ -1406,7 +1300,6 @@ function loseMinigame() {
     if (currentDrunkLevel >= 100 && !isDead) setTimeout(() => gameOver(), 1500);
 }
 
-// ======================= ОТРУБ =======================
 function gameOver() {
     if (isDead) return;
     isDead = true;
@@ -1433,7 +1326,6 @@ function gameOver() {
     checkAchievements();
 }
 
-// ======================= ПОХМЕЛЬЕ =======================
 function startHangover() {
     if (isHangover) return;
     isHangover = true;
@@ -1453,7 +1345,6 @@ waterBtn.addEventListener('click', () => {
     resetGame(false);
 });
 
-// ======================= СБРОС =======================
 function resetGame(silent) {
     isDead = false;
     isHangover = false;
@@ -1498,12 +1389,7 @@ function resetGame(silent) {
 }
 
 resetBtn.addEventListener('click', () => {
-    // Если был отруб — сначала похмелье
-    if (isDead) {
-        resetGame(true);
-        startHangover();
-        return;
-    }
+    if (isDead) { resetGame(true); startHangover(); return; }
     resetGame(false);
 });
 
@@ -1515,7 +1401,6 @@ changeGenderBtn.addEventListener('click', () => {
     currentGender = null;
 });
 
-// ======================= ДОСТИЖЕНИЯ =======================
 function checkAchievements() {
     ACHIEVEMENTS.forEach(ach => {
         if (stats.achievementsUnlocked[ach.id]) return;
@@ -1536,10 +1421,7 @@ function showAchievementToast(ach) {
     setTimeout(() => playTone(1000, 0.3, 'triangle', 0.1), 150);
 }
 
-// ======================= ПАНЕЛИ =======================
-window.closePanel = function(id) {
-    $(id).classList.remove('show');
-};
+window.closePanel = function(id) { $(id).classList.remove('show'); };
 
 settingsBtn.addEventListener('click', () => {
     $('settings').classList.toggle('show');
@@ -1555,14 +1437,13 @@ $('fxIntensity').addEventListener('input', (e) => { settings.fxIntensity = parse
 $('chromaticToggle').addEventListener('change', (e) => { settings.chromatic = e.target.checked; saveStats(); });
 $('tunnelToggle').addEventListener('change', (e) => { settings.tunnel = e.target.checked; saveStats(); });
 
-// Книга рецептов
 recipeBookBtn.addEventListener('click', () => {
     const panel = $('recipeBook');
     panel.classList.toggle('show');
     if (panel.classList.contains('show')) buildRecipeBook();
 });
 function buildRecipeBook() {
-    const allCombos = Object.assign({}, COMBOS, SECRET_COMBOS);
+    const allCombos = getAllCombos();
     const total = Object.keys(allCombos).length;
     const discovered = Object.keys(stats.discoveredCombos).length;
     $('recipeProgress').textContent = `Открыто: ${discovered} / ${total}`;
@@ -1583,8 +1464,6 @@ function buildRecipeBook() {
     });
 }
 
-// Достижения (открыть по кнопке можно из панели настроек? Добавим кнопку)
-// Пока достижения открываются через долгий клик по статусу
 status.addEventListener('dblclick', () => {
     $('achievements').classList.toggle('show');
     if ($('achievements').classList.contains('show')) buildAchievements();
@@ -1601,32 +1480,27 @@ function buildAchievements() {
     });
 }
 
-// Случайный коктейль
 randomBtn.addEventListener('click', () => {
     if (isDead || isHangover || !currentGender) return;
-    const count = 1 + Math.floor(Math.random() * 3);
-    const picked = [];
-    for (let i = 0; i < count; i++) picked.push(randomFrom(DRINK_KEYS));
-    picked.forEach(k => {
+    const count = 1 + Math.floor(Math.random() * 4); // до 4 рандомных напитков
+    for (let i = 0; i < count; i++) {
+        const k = randomFrom(DRINK_KEYS);
         glassContents.push(k);
         stats.drinksTried[k] = true;
-    });
+    }
     updateGlassVisual();
     updateIngredientList();
     showJoke('🎲 Случайный коктейль!', 1500);
     playBubbleSound();
 });
 
-// ======================= ИНИЦИАЛИЗАЦИЯ =======================
 createBottles();
 updateDrunkMeter();
 updateIngredientList();
 updateTimeOfDay();
 
-// Скрываем подсказку через 10 секунд
 setTimeout(() => { drinkHint.style.opacity = '0.4'; }, 10000);
 
-// Двойной клик по столу — шутка
 table.addEventListener('click', (e) => {
     if (e.target === table && !isDead && !isHangover) {
         const g = currentGender ? GENDERS[currentGender] : null;
@@ -1634,7 +1508,6 @@ table.addEventListener('click', (e) => {
     }
 });
 
-// Обработка касаний для мобильных
 document.addEventListener('touchstart', () => { if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume(); }, { once:true });
 
 })();
