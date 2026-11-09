@@ -851,7 +851,7 @@ function selectGender(gender) {
     status.style.borderColor = g.uiBorder;
 
     buddyBody.textContent = bg.tagText.split(' ')[1] === 'Парень' ? '🧔' : '👩';
-    buddyName.textContent = bg.name;
+    buddyName.textContent = buddyGender === 'male' ? 'Друг' : 'Подруга';
 
     setTimeout(() => hands.classList.add('visible'), 300);
     setTimeout(() => showJoke(g.intro, 3500), 400);
